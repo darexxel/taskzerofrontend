@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Profile Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2A2A2A;
+            --accent: #00CED1;
+            --gradient: linear-gradient(135deg, #00CED1 0%, #6A5ACD 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--gradient);
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-pic {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: auto;
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .job-title {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        .bio {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .utc-time {
+            background: rgba(0,206,209,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Decorative elements */
+        .card-deco {
+            position: absolute;
+            background: rgba(0,206,209,0.1);
+            border-radius: 50%;
+        }
+
+        .deco-1 {
+            width: 100px;
+            height: 100px;
+            top: -30px;
+            right: -30px;
+        }
+
+        .deco-2 {
+            width: 60px;
+            height: 60px;
+            bottom: -20px;
+            left: -20px;
+        }
+
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-pic {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="card-deco deco-1"></div>
+        <div class="card-deco deco-2"></div>
+        
+        <div class="profile-pic">
+            <img src="my image.jpeg" alt="Profile Picture" data-testid="profilePicture">
+        </div>
+
+        <div class="details">
+            <h1 data-testid="fullName">Gbolagade Oluwadara</h1>
+            <p class="job-title" data-testid="jobTitle">Frontend Developer</p>
+            
+            <p class="bio" data-testid="shortBio">
+                Creative frontend developer specializing in crafting beautiful web experiences. 
+                Passionate about responsive design, animation, and user-centered solutions. 
+                Currently exploring the intersection of design and technology.
+            </p>
+
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-testid="currentLocation">Ibadan Nigeria</span>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span data-testid="emailAddress">daryjoe765@gmail.com</span>
+            </div>
+
+                        <div class="social-links" data-testid="socialLinks">
+                            <a href="https://github.com/darexxel" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/gbolagade-oluwadara-791514247" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/Daryjoee" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+
+            <div class="utc-time" data-testid="currentTimeUTC"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                timeZone: 'UTC' 
+            };
+            document.querySelector('[data-testid="currentTimeUTC"]').textContent = 
+                `🕒 ${now.toLocaleDateString('en-US', options)} UTC`;
+        }
+        window.onload = updateTime;
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
